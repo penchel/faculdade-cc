@@ -27,6 +27,6 @@ Sugestões e feedbacks são sempre bem-vindos! Sinta-se à vontade para abrir um
 Se quiser conversar sobre algum projeto ou colaboração, entre em contato:
 
 - **Email**: [penchel.andre@gmail.com](mailto:penchel.andre@gmail.com)
-- **LinkedIn**: [andré-penchel-4276582b7](https://www.linkedin.com/in/andré-penchel-4276582b7/)
+- **LinkedIn**: [André Penchel](https://www.linkedin.com/in/andré-penchel-4276582b7/)
 
 Obrigado pela visita! ⭐ Se gostou, não se esqueça de dar uma estrela neste repositório.
