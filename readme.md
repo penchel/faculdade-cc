@@ -4,12 +4,11 @@ Este repositório contém minhas implementações, projetos e aprendizados desen
 
 ## 📂 Estrutura do Repositório
 
-O repositório está organizado por categorias, facilitando a navegação e o entendimento dos conteúdos:
+O repositório está estruturado em categorias, geralmente correspondentes às disciplinas, tornando a navegação mais intuitiva e o acesso aos conteúdos mais organizado.
 
 - **Algoritmos e Estruturas de Dados**: Implementações de algoritmos e soluções de problemas.
-- **Banco de Dados**: Modelagem, scripts SQL, e projetos práticos como sistemas de doações.
-- **Inteligência Artificial e Machine Learning**: Modelos de aprendizado de máquina, projetos de deep learning e sistemas de recomendação.
-- **Engenharia de Software**: Projetos desenvolvidos utilizando boas práticas de desenvolvimento.
+- **Arquitetura de Computadores**: Modelagem, scripts SQL, e projetos práticos como sistemas de doações.
+- **Grafos**: Modelos de aprendizado de máquina, projetos de deep learning e sistemas de recomendação.
 - **Outros**: Trabalhos e projetos complementares.
 
 ## 🌱 Objetivo
