@@ -296,8 +296,56 @@ int** reconhececiclo(bool **vetor, int n){
 
 }
 
-
 void main(){
+    int **lista = (int**) malloc(6*sizeof(int*));
+    for (int i = 0; i < 6; i++) {
+        lista[i] = (int*) malloc(3 * sizeof(int));  // Cada ponteiro armazena um array de 3 inteiros
+
+        if (lista[i] == NULL) {
+            printf("Erro ao alocar memória!\n");
+            return 1;
+        }
+    }
+    int array[] = {0,1,2};
+    int tam = sizeof(array)/sizeof(int);
+    int aux = 0;
+    for (int i = 0; i < tam; i++)
+    {
+        array[0] = i;
+        for (int j = 0; j < tam; j++)
+        {
+            while(j == i) j++;
+            if(!(j<tam)) break;
+            array[1] = j;
+            for (int h = 0; h < tam; h++)
+            {
+                while(h == i || h == j) h++;
+                if(!(h<tam)) break;
+                array[2] = h;
+                for (int x = 0; x < tam; x++)
+                {
+                    lista[aux][x] = array[x];
+                }
+                aux++;
+
+            }
+             
+        }
+
+        
+    }
+
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf("%d ",lista[i][j]);
+        }
+        printf("\n");
+    }
+    
+}
+void main2(){
     int n = 6;
     num = 0;
     //scanf("%d",&n);
