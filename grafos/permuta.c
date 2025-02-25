@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+
 bool** instanciamatriz(int n){
     bool **vetor = (bool**) malloc(n * sizeof(bool*));
     for (int i = 0; i < n; i++)
@@ -81,7 +82,11 @@ void reconhece2num(int* v1, int* v2, char* str){
     
     
 }
+void inserearesta(int a, int b, bool **vetor){
+    vetor[a][b] = true;
+    vetor[b][a] = true;
 
+}
 void incluiarestas(bool **vetor){
     char input[100];
     printf("Digite as arestas (0 para sair):\n");
@@ -93,25 +98,39 @@ void incluiarestas(bool **vetor){
         else{
             int v1,v2;
             reconhece2num(&v1, &v2, input);
-            if(v1 == -1 || v2 == -1)
+            if(v1 == -1 || v2 == -1){
+                printf("FORMATO INCORRETO");
+            }
             
             
         }
     }
 }
 
-
+void reconhececiclo(bool **vetor){
+    
+}
 
 
 void main(){
-    int n = 4;
+    int n = 6;
     //scanf("%d",&n);
-    //bool **vetor = instanciamatriz(n);
-    //printmatriz(vetor,n);
-    char input[] = "1 pl";
-    int v1, v2;
-    reconhece2num(&v1, &v2,input);
-    printf("%d, %d\n",v1,v2);
+    bool **vetor = instanciamatriz(n);
+    inserearesta(0,1,vetor);
+    inserearesta(0,3,vetor);
+    inserearesta(0,4,vetor);
+    inserearesta(1,3,vetor);
+    inserearesta(1,2,vetor);
+    inserearesta(1,4,vetor);
+    inserearesta(4,5,vetor);
+    inserearesta(4,2,vetor);
+    inserearesta(3,5,vetor);
+    inserearesta(3,2,vetor);
+    inserearesta(2,5,vetor);
+    printmatriz(vetor,6);
+
+
+    
     
     
 }
