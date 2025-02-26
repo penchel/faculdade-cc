@@ -326,7 +326,7 @@ void addproib(int n, int*proib){
     
 }
 int aux = 0;
-int** permuta(int** lista, int*array, int tam, int pos, int* proib){
+void permuta(int** lista, int*array, int tam, int pos){
     int *save = (int*) malloc(tam * sizeof(int));
     
     for (int i = 0; i < tam; i++)
@@ -339,20 +339,31 @@ int** permuta(int** lista, int*array, int tam, int pos, int* proib){
         if(!(i<tam)) break;
         array[pos] = i;
         if(pos == tam -1){
-            for (int j = 0; j < tam; j++)
-            {
-                printf("%d ",array[j]);
-            }
-            printf("\n");
+            memcpy(lista[aux], array, tam * sizeof(int));
+            aux++;
         }else{
-            permuta(lista, array, tam, pos+1, proib);
+            permuta(lista, array, tam, pos+1);
         }
         
     }
 
-    return lista;
+    
 
     
+}
+
+int ** permutation(int *array, int tam, int linhas){
+    int **lista = (int**) malloc(tam*sizeof(int*));
+    for (int i = 0; i < linhas; i++) {
+        lista[i] = (int*) malloc(tam * sizeof(int));  
+
+        if (lista[i] == NULL) {
+            printf("Erro ao alocar memória!\n");
+        }
+    }
+    permuta(lista, array, tam, 0); 
+    
+    return lista;
 }
 
 void main(){
@@ -377,23 +388,15 @@ void main(){
    int array[4];
    int tam = sizeof(array)/sizeof(int);
    int linhas = fatorial(tam);
-   int **lista = (int**) malloc(tam*sizeof(int*));
-    for (int i = 0; i < linhas; i++) {
-        lista[i] = (int*) malloc(tam * sizeof(int));  // Cada ponteiro armazena um array de 3 inteiros
-
-        if (lista[i] == NULL) {
-            printf("Erro ao alocar memória!\n");
+   int **permutacoes = permutation(array, tam, linhas);
+   for(int i =0; i<linhas;i++){  
+        for (int j = 0; j < tam; j++){
+            printf("%d ",permutacoes[i][j]);
         }
+        printf("\n");
     }
     
     
-
-    int *proib = (int*) malloc(tam * sizeof(int));
-    for (int i = 0; i < tam; i++)
-    {
-        proib[i] = -1;
-    }
-    permuta(lista, array, tam, 0, proib);    
     
 }
 
