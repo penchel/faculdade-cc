@@ -296,57 +296,73 @@ int** reconhececiclo(bool **vetor, int n){
 
 }
 
-void main(){
-    int **lista = (int**) malloc(6*sizeof(int*));
-    for (int i = 0; i < 6; i++) {
-        lista[i] = (int*) malloc(3 * sizeof(int));  // Cada ponteiro armazena um array de 3 inteiros
+int fatorial(int n) {
+    return (n <= 1) ? 1 : n * fatorial(n - 1);
+}
 
-        if (lista[i] == NULL) {
-            printf("Erro ao alocar memória!\n");
-            return 1;
-        }
-    }
-    int array[] = {0,1,2};
+bool isin(int *array, int pos, int a){
     int tam = sizeof(array)/sizeof(int);
-    int aux = 0;
+    for (int i = pos -1; i >= 0; i--)
+    {
+        if(array[i] == a)return true;
+    }
+    
+    return false;
+    
+}
+
+void addproib(int n, int*proib){
+    int tam = sizeof(proib)/sizeof(int);
+    int x = 0;
     for (int i = 0; i < tam; i++)
     {
-        array[0] = i;
-        for (int j = 0; j < tam; j++)
-        {
-            while(j == i) j++;
-            if(!(j<tam)) break;
-            array[1] = j;
-            for (int h = 0; h < tam; h++)
-            {
-                while(h == i || h == j) h++;
-                if(!(h<tam)) break;
-                array[2] = h;
-                for (int x = 0; x < tam; x++)
-                {
-                    lista[aux][x] = array[x];
-                }
-                aux++;
-
-            }
-             
+        if(proib[i] == -1){
+            x = i;
+            break;
         }
-
+    }
+    
+    proib[x] = n;
+    
+}
+int aux = 0;
+int** permuta(int** lista, int*array, int tam, int pos, int* proib){
+    int *save = (int*) malloc(tam * sizeof(int));
+    
+    for (int i = 0; i < tam; i++)
+    {
+        for (int h = 1; h<=pos ; h++)
+        {
+            if(i == array[pos-h]){
+                i++;
+            }
+        }
+        
+        if(i == array[pos-1]){
+            i++;
+        }
+        
+        if(!(i<tam)) break;
+        array[pos] = i;
+        if(pos == tam -1){
+            for (int j = 0; j < tam; j++)
+            {
+                printf("%d ",array[j]);
+            }
+            printf("\n");
+        }else{
+            permuta(lista, array, tam, pos+1, proib);
+        }
         
     }
 
-    for (int i = 0; i < 6; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            printf("%d ",lista[i][j]);
-        }
-        printf("\n");
-    }
+    return lista;
+
     
 }
-void main2(){
-    int n = 6;
+
+void main(){
+    /*int n = 6;
     num = 0;
     //scanf("%d",&n);
     bool **vetor = instanciamatriz(n);
@@ -363,8 +379,37 @@ void main2(){
     inserearesta(2,5,vetor);
     printmatriz(vetor,n);
     printf("\n//////////////\n");
+    */
+   int array[] = {0,1,2};
+   int tam = sizeof(array)/sizeof(int);
+   int linhas = fatorial(tam);
+   int **lista = (int**) malloc(tam*sizeof(int*));
+    for (int i = 0; i < 6; i++) {
+        lista[i] = (int*) malloc(tam * sizeof(int));  // Cada ponteiro armazena um array de 3 inteiros
+
+        if (lista[i] == NULL) {
+            printf("Erro ao alocar memória!\n");
+        }
+    }
     
     
+
+    int *proib = (int*) malloc(tam * sizeof(int));
+    for (int i = 0; i < tam; i++)
+    {
+        proib[i] = -1;
+    }
+    permuta(lista, array, tam, 0, proib);
+
+    /*for (int i = 0; i < linhas; i++)
+    {
+        for (int j = 0; j < tam; j++)
+        {
+            printf("%d ",lista[i][j]);
+        }
+        printf("\n");
+        
+    }*/
     
     
     
