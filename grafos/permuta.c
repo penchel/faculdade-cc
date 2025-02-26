@@ -302,9 +302,9 @@ int fatorial(int n) {
 
 bool isin(int *array, int pos, int a){
     int tam = sizeof(array)/sizeof(int);
-    for (int i = pos -1; i >= 0; i--)
+    for (int i = 0; i < pos; i++)
     {
-        if(array[i] == a)return true;
+        if(a == array[i]) return true;
     }
     
     return false;
@@ -331,14 +331,8 @@ int** permuta(int** lista, int*array, int tam, int pos, int* proib){
     
     for (int i = 0; i < tam; i++)
     {
-        for (int h = 1; h<=pos ; h++)
+        while (isin(array, pos, i))
         {
-            if(i == array[pos-h]){
-                i++;
-            }
-        }
-        
-        if(i == array[pos-1]){
             i++;
         }
         
@@ -380,11 +374,11 @@ void main(){
     printmatriz(vetor,n);
     printf("\n//////////////\n");
     */
-   int array[] = {0,1,2};
+   int array[4];
    int tam = sizeof(array)/sizeof(int);
    int linhas = fatorial(tam);
    int **lista = (int**) malloc(tam*sizeof(int*));
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < linhas; i++) {
         lista[i] = (int*) malloc(tam * sizeof(int));  // Cada ponteiro armazena um array de 3 inteiros
 
         if (lista[i] == NULL) {
@@ -399,19 +393,7 @@ void main(){
     {
         proib[i] = -1;
     }
-    permuta(lista, array, tam, 0, proib);
-
-    /*for (int i = 0; i < linhas; i++)
-    {
-        for (int j = 0; j < tam; j++)
-        {
-            printf("%d ",lista[i][j]);
-        }
-        printf("\n");
-        
-    }*/
-    
-    
+    permuta(lista, array, tam, 0, proib);    
     
 }
 
