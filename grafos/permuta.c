@@ -380,6 +380,27 @@ void mostrar(int **permutacoes, int tam, int linhas){
     }
 }
 
+bool esta(int a,int *array, int tam){
+    for (int i = 0; i < tam; i++)
+    {
+        if(a == array[i]){
+            return true;
+        }
+    }
+    return false;
+}
+
+void filtrar(int **permutacoes, int tam, int linhas, int *filtro){
+    for(int i =0; i<linhas;i++){ 
+        if(esta(i,filtro,linhas)){ 
+            for (int j = 0; j < tam; j++){
+                printf("%d ",permutacoes[i][j]);
+            }
+            printf("\n");
+        }
+    }
+}
+
 int *arraytransform(int n, int vertice){
     int np = n -1;
    int *arrayex =(int*) malloc(np * sizeof(int));
@@ -400,7 +421,9 @@ int *arraytransform(int n, int vertice){
    }
    printf("\n");*/
 }
+bool existelig(int* array){
 
+}
 void main(){
     
     
@@ -423,7 +446,7 @@ void main(){
     printf("\n//////////////\n");
     
    
-   int vertice = 4;
+   int vertice = 0;
     int np = n - 1;
    int* trans = arraytransform(n,vertice);
      
@@ -443,8 +466,33 @@ void main(){
     
    }
    
-   mostrar(permutacoes, tam, linhas);
-   
+   //mostrar(permutacoes, tam, linhas);
+
+   int *filtro = (int*) malloc(linhas*sizeof(int));
+   int aju = 0;
+   bool exis = true;
+   for (int i = 0; i < linhas; i++)
+   {
+        if(!(vetor[vertice][permutacoes[i][0]])){
+            exis =false;
+        }
+        for (int j = 0; j < tam-1; j++)
+        {
+            if(!(vetor[permutacoes[i][j]][permutacoes[i][j+1]])){
+                exis = false;
+            }
+        }
+        if(!(vetor[permutacoes[i][tam-1]][vertice])){
+            exis =false;
+        }
+        if(exis){
+            filtro[aju] = i;
+            aju++;
+        }else{
+            exis = true;
+        } 
+   }
+   filtrar(permutacoes, tam, linhas, filtro);
     
 }
 
