@@ -327,7 +327,7 @@ void addproib(int n, int*proib){
 }
 int aux = 0;
 void permuta(int** lista, int*array, int tam, int pos){
-    int *save = (int*) malloc(tam * sizeof(int));
+
     
     for (int i = 0; i < tam; i++)
     {
@@ -339,7 +339,12 @@ void permuta(int** lista, int*array, int tam, int pos){
         if(!(i<tam)) break;
         array[pos] = i;
         if(pos == tam -1){
-            memcpy(lista[aux], array, tam * sizeof(int));
+            //memcpy(lista[aux], array, tam * sizeof(int));
+            for (int k = 0; k < tam; k++)
+            {
+                lista[aux][k] = array[k];
+            }
+            
             aux++;
         }else{
             permuta(lista, array, tam, pos+1);
@@ -353,7 +358,7 @@ void permuta(int** lista, int*array, int tam, int pos){
 }
 
 int ** permutation(int *array, int tam, int linhas){
-    int **lista = (int**) malloc(tam*sizeof(int*));
+    int **lista = (int**) malloc(linhas*sizeof(int*));
     for (int i = 0; i < linhas; i++) {
         lista[i] = (int*) malloc(tam * sizeof(int));  
 
@@ -366,8 +371,40 @@ int ** permutation(int *array, int tam, int linhas){
     return lista;
 }
 
+void mostrar(int **permutacoes, int tam, int linhas){
+    for(int i =0; i<linhas;i++){  
+        for (int j = 0; j < tam; j++){
+            printf("%d ",permutacoes[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int *arraytransform(int n, int vertice){
+    int np = n -1;
+   int *arrayex =(int*) malloc(np * sizeof(int));
+   for (int i = 0; i < np; i++)
+   {
+    arrayex[i] = i+1;
+   }
+
+   for (int i = 0; i < vertice; i++)
+   {
+    arrayex[i] = i;
+   }
+   
+   return arrayex;
+  /* for (int i = 0; i < np; i++)
+   {
+    printf("%d ",arrayex[i]);
+   }
+   printf("\n");*/
+}
+
 void main(){
-    /*int n = 6;
+    
+    
+    int n = 6;
     num = 0;
     //scanf("%d",&n);
     bool **vetor = instanciamatriz(n);
@@ -384,19 +421,30 @@ void main(){
     inserearesta(2,5,vetor);
     printmatriz(vetor,n);
     printf("\n//////////////\n");
-    */
-   int array[4];
-   int tam = sizeof(array)/sizeof(int);
+    
+   
+   int vertice = 4;
+    int np = n - 1;
+   int* trans = arraytransform(n,vertice);
+     
+   
+
+
+   int *array = (int*) malloc(np * (sizeof(int)));
+   int tam = np;
    int linhas = fatorial(tam);
    int **permutacoes = permutation(array, tam, linhas);
-   for(int i =0; i<linhas;i++){  
-        for (int j = 0; j < tam; j++){
-            printf("%d ",permutacoes[i][j]);
-        }
-        printf("\n");
+   for (int i = 0; i < linhas; i++)
+   {
+    for (int j = 0; j < tam; j++)
+    {
+        permutacoes[i][j] = trans[permutacoes[i][j]];
     }
     
-    
+   }
+   
+   mostrar(permutacoes, tam, linhas);
+   
     
 }
 
