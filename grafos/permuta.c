@@ -390,19 +390,20 @@ bool esta(int a,int *array, int tam){
     return false;
 }
 
-void filtrar(int **permutacoes, int tam, int linhas, int *filtro){
+void filtrar(int **permutacoes, int tam, int linhas, int *filtro, char* letra, int vertice){
     for(int i =0; i<linhas;i++){ 
         if(esta(i,filtro,linhas)){ 
+            printf("%c ",letra[vertice]);
             for (int j = 0; j < tam; j++){
-                printf("%d ",permutacoes[i][j]);
+                printf("%c ",letra[permutacoes[i][j]]);
             }
+            printf("%c", letra[vertice]);
             printf("\n");
         }
     }
 }
 
-int *arraytransform(int n, int vertice){
-    int np = n -1;
+int *arraytransform(int np, int vertice){
    int *arrayex =(int*) malloc(np * sizeof(int));
    for (int i = 0; i < np; i++)
    {
@@ -421,9 +422,10 @@ int *arraytransform(int n, int vertice){
    }
    printf("\n");*/
 }
-bool existelig(int* array){
+void printadefinitivo(){
 
 }
+
 void main(){
     
     
@@ -444,55 +446,12 @@ void main(){
     inserearesta(2,5,vetor);
     printmatriz(vetor,n);
     printf("\n//////////////\n");
-    
-   
-   int vertice = 0;
-    int np = n - 1;
-   int* trans = arraytransform(n,vertice);
-     
+
+   char letra[] = {'A','B','C','D','E','F'};
+   int nsub = 2;
    
 
-
-   int *array = (int*) malloc(np * (sizeof(int)));
-   int tam = np;
-   int linhas = fatorial(tam);
-   int **permutacoes = permutation(array, tam, linhas);
-   for (int i = 0; i < linhas; i++)
-   {
-    for (int j = 0; j < tam; j++)
-    {
-        permutacoes[i][j] = trans[permutacoes[i][j]];
-    }
-    
-   }
    
-   //mostrar(permutacoes, tam, linhas);
-
-   int *filtro = (int*) malloc(linhas*sizeof(int));
-   int aju = 0;
-   bool exis = true;
-   for (int i = 0; i < linhas; i++)
-   {
-        if(!(vetor[vertice][permutacoes[i][0]])){
-            exis =false;
-        }
-        for (int j = 0; j < tam-1; j++)
-        {
-            if(!(vetor[permutacoes[i][j]][permutacoes[i][j+1]])){
-                exis = false;
-            }
-        }
-        if(!(vetor[permutacoes[i][tam-1]][vertice])){
-            exis =false;
-        }
-        if(exis){
-            filtro[aju] = i;
-            aju++;
-        }else{
-            exis = true;
-        } 
-   }
-   filtrar(permutacoes, tam, linhas, filtro);
     
 }
 
