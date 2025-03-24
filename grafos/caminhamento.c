@@ -26,8 +26,9 @@ int adiciona(int **vizinhos, int tam, int num, int pos){
 }
 
 void main(){
-    int n = 3;
-    int *ponteiros = (int*) malloc(n*sizeof(int));
+    int n = 6;
+    char letra[] = {'A','B','C','D','E','F'};
+    int *ponteiros = (int*) malloc((n+1)*sizeof(int));
     for (int i = 0; i < n; i++)
     {
         ponteiros[i] = -1;
@@ -40,7 +41,30 @@ void main(){
     tam_viz = adiciona(&vizinhos,tam_viz,3,tam_viz);
     tam_viz = adiciona(&vizinhos,tam_viz,4,tam_viz);
     ponteiros[1] = tam_viz;
-    for (int i = 0; i < n; i++)
+    tam_viz = adiciona(&vizinhos,tam_viz,0,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,2,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,3,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,4,tam_viz);
+    ponteiros[2] = tam_viz;
+    tam_viz = adiciona(&vizinhos,tam_viz,1,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,3,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,4,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,5,tam_viz);
+    ponteiros[3] = tam_viz;
+    tam_viz = adiciona(&vizinhos,tam_viz,0,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,1,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,2,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,5,tam_viz);
+    ponteiros[4] = tam_viz;
+    tam_viz = adiciona(&vizinhos,tam_viz,0,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,1,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,2,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,5,tam_viz);
+    ponteiros[5] = tam_viz;
+    tam_viz = adiciona(&vizinhos,tam_viz,3,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,4,tam_viz);
+    ponteiros[6] = tam_viz;
+    for (int i = 0; i < n+1; i++)
     {
         printf("%d ",ponteiros[i]);
     }
@@ -50,6 +74,17 @@ void main(){
         printf("%d ", vizinhos[i]);
     }
     printf("\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("%c --> ",letra[i]);
+        for (int j = ponteiros[i]; j < ponteiros[i+1]; j++)
+        {
+            printf("%c ",letra[vizinhos[j]]);
+        }
+        printf("\n");
+    }
+    
 
 
     
