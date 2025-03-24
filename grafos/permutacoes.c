@@ -239,8 +239,9 @@ int *arraytransform(int np, int vertice){
     printf("\n");*/
  }
 int main() {
-    int n = 5; // Defina o valor de n
-    bool **vetor = instanciamatriz(n+1);
+    int numvertices = 6;
+    int n = numvertices - 1; // Defina o valor de n
+    bool **vetor = instanciamatriz(numvertices);
     inserearesta(0,1,vetor);
     inserearesta(0,3,vetor);
     inserearesta(0,4,vetor);
