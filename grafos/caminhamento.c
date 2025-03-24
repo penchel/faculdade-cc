@@ -26,23 +26,33 @@ int adiciona(int **vizinhos, int tam, int num, int pos){
 }
 
 void main(){
-    int n = 6;
+    int n = 3;
     int *ponteiros = (int*) malloc(n*sizeof(int));
     for (int i = 0; i < n; i++)
     {
         ponteiros[i] = -1;
     }
-    
     int *vizinhos = (int*) malloc(sizeof(int));
     int tam_viz = 0;
-    tam_viz = adiciona(&vizinhos,tam_viz, 1, tam_viz);
-    tam_viz = adiciona(&vizinhos,tam_viz, 2, 0);
-    tam_viz = adiciona(&vizinhos,tam_viz, 3, tam_viz);
-    for (int i = 0; i < tam_viz; i++)
+
+    ponteiros[0] = tam_viz;
+    tam_viz = adiciona(&vizinhos,tam_viz,1,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,3,tam_viz);
+    tam_viz = adiciona(&vizinhos,tam_viz,4,tam_viz);
+    ponteiros[1] = tam_viz;
+    for (int i = 0; i < n; i++)
     {
-        printf("%d ",vizinhos[i]);
+        printf("%d ",ponteiros[i]);
     }
     printf("\n");
-    printf("%d\n",tam_viz);
+    for (int i = 0; i < tam_viz; i++)
+    {
+        printf("%d ", vizinhos[i]);
+    }
+    printf("\n");
+
+
+    
+    
     
 }
