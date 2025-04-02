@@ -63,6 +63,7 @@ void criaGrafo() {
     tam_viz = adiciona(&vizinhos, tam_viz, 2, tam_viz);
     tam_viz = adiciona(&vizinhos, tam_viz, 5, tam_viz);
     ponteiros[5] = tam_viz;
+    tam_viz = adiciona(&vizinhos, tam_viz, 2, tam_viz);
     tam_viz = adiciona(&vizinhos, tam_viz, 3, tam_viz);
     tam_viz = adiciona(&vizinhos, tam_viz, 4, tam_viz);
     ponteiros[6] = tam_viz;
@@ -161,20 +162,22 @@ int main() {
     criaGrafo();
     imprimeGrafo();
     int list[MAX_TAM];
-    int tamanho = 0;
-
-    int vertice = 0;
-    int alvo = vertice;
-    int lista[MAX_TAM];
-    for (int i = 0; i < tamanho; i++) {
-        lista[i] = list[i];
-    }    
-    inserirFim(vertice,lista,tamanho);
-    tamanho++;
-    for (int i = ponteiros[vertice]; i < ponteiros[vertice+1]; i++)
-    {
-        buscar(vizinhos[i],lista,tamanho, alvo);
-    }
     
+
+    for(int vertice = 0; vertice < 6; vertice++){
+        int alvo = vertice;
+        int lista[MAX_TAM];
+        int tamanho = 0;
+        for (int i = 0; i < tamanho; i++) {
+            lista[i] = list[i];
+        }    
+        inserirFim(vertice,lista,tamanho);
+        tamanho++;
+        for (int i = ponteiros[vertice]; i < ponteiros[vertice+1]; i++)
+        {
+            buscar(vizinhos[i],lista,tamanho, alvo);
+        }
+        //printf("%d\n",vertice);
+    }
     return 0;
 }
