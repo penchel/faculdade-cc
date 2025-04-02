@@ -119,7 +119,7 @@ bool inserirInicio(int valor, int* lista, int tamanho) {
 
 // Imprime a lista
 void imprimirLista(int* lista, int tamanho) {
-    printf("Lista: ");
+    //printf("Lista: ");
     for (int i = 0; i < tamanho; i++) {
         printf("%c ", letra[lista[i]]);
     }
@@ -130,9 +130,9 @@ void imprimirLista(int* lista, int tamanho) {
 bool vertice_repetido(int vert, int *list, int tamanho){
     for (int i = 1; i < tamanho; i++)
     {
-        if(list[i])
+        if(list[i] == vert) return true;
     }
-    
+    return false;
 }
 
 void buscar(int vertice, int *list, int tamanho,int alvo){
@@ -147,15 +147,19 @@ void buscar(int vertice, int *list, int tamanho,int alvo){
         tamanho++;
         for (int i = ponteiros[vertice]; i < ponteiros[vertice+1]; i++)
         {
-
-            buscar(vizinhos[i],lista,tamanho, alvo);
+            if(!vertice_repetido(vizinhos[i],lista, tamanho)){
+                if(lista[tamanho-2]!=vizinhos[i]){
+                    buscar(vizinhos[i],lista,tamanho, alvo);
+                }
+            }
+            
         }
     }
     
 }
 int main() {
     criaGrafo();
-    //imprimeGrafo();
+    imprimeGrafo();
     int list[MAX_TAM];
     int tamanho = 0;
 
