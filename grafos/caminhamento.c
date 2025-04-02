@@ -127,6 +127,14 @@ void imprimirLista(int* lista, int tamanho) {
     printf("\n");
 }
 
+bool vertice_repetido(int vert, int *list, int tamanho){
+    for (int i = 1; i < tamanho; i++)
+    {
+        if(list[i])
+    }
+    
+}
+
 void buscar(int vertice, int *list, int tamanho,int alvo){
     if(vertice == alvo){
         imprimirLista(list,tamanho);
@@ -139,6 +147,7 @@ void buscar(int vertice, int *list, int tamanho,int alvo){
         tamanho++;
         for (int i = ponteiros[vertice]; i < ponteiros[vertice+1]; i++)
         {
+
             buscar(vizinhos[i],lista,tamanho, alvo);
         }
     }
