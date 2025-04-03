@@ -1,3 +1,4 @@
+A B C D A
 A B C D F E A
 A B C E A
 A B C E F D A
@@ -6,10 +7,12 @@ A B C F E A
 A B D A
 A B D C E A
 A B D C F E A
+A B D F C E A
 A B D F E A
 A B E A
 A B E C D A
 A B E C F D A
+A B E F C D A
 A B E F D A
 A D B A
 A D B C E A
@@ -21,6 +24,10 @@ A D C E A
 A D C E B A
 A D C F E A
 A D C F E B A
+A D F C B A
+A D F C B E A 
+A D F C E A
+A D F C E B A
 A D F E A
 A D F E B A
 A D F E C B A
@@ -34,6 +41,10 @@ A E C D A
 A E C D B A
 A E C F D A
 A E C F D B A
+A E F C B A
+A E F C B D A
+A E F C D A
+A E F C D B A
 A E F D A
 A E F D B A
 A E F D C B A
@@ -41,12 +52,16 @@ B A D B
 B A D C B
 B A D C E B
 B A D C F E B
+B A D F C B
+B A D F C E B
 B A D F E B
 B A D F E C B
 B A E B
 B A E C B
 B A E C D B
 B A E C F D B
+B A E F C B
+B A E F C D B
 B A E F D B
 B A E F D C B
 B C D A B
@@ -68,52 +83,76 @@ B C F E B
 B D A B
 B D A E B
 B D A E C B
+B D A E F C B
 B D C B
 B D C E A B
 B D C E B
 B D C F E A B
 B D C F E B
+B D F C B
+B D F C E A B
+B D F C E B
 B D F E A B
 B D F E B
-B D F E C B
+B D F E C B 
 B E A B
 B E A D B
 B E A D C B
+B E A D F C B
 B E C B
 B E C D A B
 B E C D B
 B E C F D A B
 B E C F D B
+B E F C B
+B E F C D A B
+B E F C D B
 B E F D A B
 B E F D B
 B E F D C B
 C B A D C
+C B A D F C
 C B A D F E C
 C B A E C
+C B A E F C
 C B A E F D C
 C B D A E C
+C B D A E F C
 C B D C
-C B D F E C 
+C B D F C
+C B D F E C
 C B E A D C
+C B E A D F C
 C B E C
+C B E F C
 C B E F D C
 C D A B C
 C D A B E C
+C D A B E F C
 C D A E B C
 C D A E C
+C D A E F C
 C D B A E C
+C D B A E F C
 C D B C
 C D B E C
+C D B E F C
+C D F C
 C D F E A B C
 C D F E B C
 C D F E C
 C E A B C
 C E A B D C
+C E A B D F C
 C E A D B C
 C E A D C
+C E A D F C
 C E B A D C
+C E B A D F C
 C E B C
 C E B D C
+C E B D F C
+C E F C
 C E F D A B C
 C E F D B C
 C E F D C
@@ -139,6 +178,7 @@ D A B C F D
 D A B D
 D A B E C D
 D A B E C F D
+D A B E F C D
 D A B E F D
 D A E B C D
 D A E B C F D
@@ -146,10 +186,13 @@ D A E B D
 D A E C B D
 D A E C D
 D A E C F D
+D A E F C B D
+D A E F C D
 D A E F D
 D B A D
 D B A E C D
 D B A E C F D
+D B A E F C D
 D B A E F D
 D B C D
 D B C E A D
@@ -159,10 +202,11 @@ D B C F E A D
 D B E A D
 D B E C D
 D B E C F D
+D B E F C D
 D B E F D
 D C B A D
 D C B A E F D
-D C B D
+D C B D 
 D C B E A D
 D C B E F D
 D C E A B D
@@ -175,6 +219,14 @@ D C F E A B D
 D C F E A D
 D C F E B A D
 D C F E B D
+D F C B A D
+D F C B D
+D F C B E A D
+D F C D
+D F C E A B D
+D F C E A D
+D F C E B A D
+D F C E B D
 D F E A B C D
 D F E A B D
 D F E A D
@@ -189,7 +241,8 @@ E A B C E
 E A B C F E
 E A B D C E
 E A B D C F E
-E A B D F E 
+E A B D F C E
+E A B D F E
 E A B E
 E A D B C E
 E A D B C F E
@@ -197,9 +250,12 @@ E A D B E
 E A D C B E
 E A D C E
 E A D C F E
+E A D F C B E
+E A D F C E
 E A D F E
 E B A D C E
 E B A D C F E
+E B A D F C E
 E B A D F E
 E B A E
 E B C D A E
@@ -210,6 +266,7 @@ E B C F E
 E B D A E
 E B D C E
 E B D C F E
+E B D F C E
 E B D F E
 E C B A D F E
 E C B A E
@@ -225,7 +282,15 @@ E C F D A B E
 E C F D A E
 E C F D B A E
 E C F D B E
-E C F E
+E C F E 
+E F C B A E
+E F C B D A E
+E F C B E
+E F C D A B E
+E F C D A E
+E F C D B A E
+E F C D B E
+E F C E
 E F D A B C E
 E F D A B E
 E F D A E
@@ -235,6 +300,22 @@ E F D B E
 E F D C B A E
 E F D C B E
 E F D C E
+F C B A D F
+F C B A E F
+F C B D A E F
+F C B D F
+F C B E A D F
+F C B E F
+F C D A B E F
+F C D A E F
+F C D B A E F
+F C D B E F
+F C D F
+F C E A B D F
+F C E A D F
+F C E B A D F
+F C E B D F
+F C E F
 F D A B C E F
 F D A B C F
 F D A B E C F
@@ -267,5 +348,5 @@ F E B D C F
 F E B D F
 F E C B A D F
 F E C B D F
-F E C D F
+F E C D F 
 F E C F
